@@ -13,8 +13,10 @@ namespace mantis_tests
             _applicationManager.Login.Login(accountData);
             _applicationManager.ManagementMenu.GoToManagePage();
             _applicationManager.Project.GoToProjectPage();
-            
+
             _applicationManager.Project.Create(projectData);
+
+            _applicationManager.Login.LogOut();
         }
     }
 }

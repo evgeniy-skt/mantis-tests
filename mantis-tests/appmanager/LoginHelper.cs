@@ -8,13 +8,20 @@ namespace mantis_tests
         {
         }
 
-        public void Login(AccountData accountData)
+        public void Login(AccountData account)
         {
             OpenMainPage();
-            FillUserNameInput(accountData);
+            FillUserNameInput(account);
             SubmitLogin();
-            FillPasswordInput(accountData);
+            FillPasswordInput(account);
             SubmitLogin();
+        }
+
+        public void LogOut()
+        {
+            Driver.FindElement(By.ClassName("user-info")).Click();
+            Driver.FindElement(By.ClassName("fa-sign-out")).Click();
+            Driver.Quit();
         }
 
         private void FillPasswordInput(AccountData accountData)
