@@ -3,18 +3,17 @@ using NUnit.Framework;
 namespace mantis_tests
 {
     [TestFixture]
-    public class CreateProjectTest : TestBase
+    public class RemoveProjectTests : TestBase
     {
         [Test]
-        public void CreateProject()
+        public void RemoveProject()
         {
-            var projectData = new ProjectData {Name = "Test Project", Description = "fdsgfhg"};
             var accountData = new AccountData {Name = "administrator", Password = "root2"};
             _applicationManager.Login.Login(accountData);
             _applicationManager.ManagementMenu.GoToManagePage();
             _applicationManager.Project.GoToProjectPage();
 
-            _applicationManager.Project.Create(projectData);
+            _applicationManager.Project.Remove();
 
             _applicationManager.Login.LogOut();
         }

@@ -21,7 +21,7 @@ namespace mantis_tests
         {
             Driver.FindElement(By.ClassName("user-info")).Click();
             Driver.FindElement(By.ClassName("fa-sign-out")).Click();
-            Driver.Quit();
+            //Driver.Quit();
         }
 
         private void FillPasswordInput(AccountData accountData)

@@ -18,7 +18,7 @@ namespace mantis_tests
             ConfirmProjectCreation();
             Proceed();
         }
-        
+
         private void Proceed()
         {
             Driver.FindElement(By.LinkText("Proceed")).Click();
@@ -44,6 +44,32 @@ namespace mantis_tests
         public void GoToProjectPage()
         {
             Driver.FindElement(By.LinkText("Manage Projects")).Click();
+        }
+
+        public void Remove()
+        {
+            SelectProjectToRemove();
+            InitRemoveProject();
+            ConfirmRemoveProject();
+        }
+
+        private void ConfirmRemoveProject()
+        {
+            Driver.FindElement(By.ClassName("btn-round")).Click();
+        }
+
+        private void InitRemoveProject()
+        {
+            Driver.FindElement(
+                    By.CssSelector(
+                        "#project-delete-form > fieldset > input.btn.btn-primary.btn-sm.btn-white.btn-round"))
+                .Click();
+        }
+
+        private void SelectProjectToRemove()
+        {
+            var listProject = Driver.FindElements(By.CssSelector(" td > a"));
+            listProject[0].Click();
         }
     }
 }
