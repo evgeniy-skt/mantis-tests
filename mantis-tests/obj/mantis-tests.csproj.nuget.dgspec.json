@@ -1,0 +1,88 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/e.ivanchenko/RiderProjects/programming-for-testers/mantis-tests/mantis-tests/mantis-tests.csproj": {}
+  },
+  "projects": {
+    "/Users/e.ivanchenko/RiderProjects/programming-for-testers/mantis-tests/mantis-tests/mantis-tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/e.ivanchenko/RiderProjects/programming-for-testers/mantis-tests/mantis-tests/mantis-tests.csproj",
+        "projectName": "mantis-tests",
+        "projectPath": "/Users/e.ivanchenko/RiderProjects/programming-for-testers/mantis-tests/mantis-tests/mantis-tests.csproj",
+        "packagesPath": "/Users/e.ivanchenko/.nuget/packages/",
+        "outputPath": "/Users/e.ivanchenko/RiderProjects/programming-for-testers/mantis-tests/mantis-tests/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/e.ivanchenko/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/dodopizza/api/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.4.0, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[3.15.1, )"
+            },
+            "Selenium.Support": {
+              "target": "Package",
+              "version": "[4.0.0-alpha05, )"
+            },
+            "Selenium.WebDriver": {
+              "target": "Package",
+              "version": "[4.0.0-alpha05, )"
+            },
+            "System.Net.FtpClient": {
+              "target": "Package",
+              "version": "[1.0.5824.34026, )"
+            },
+            "nunit": {
+              "target": "Package",
+              "version": "[3.12.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
