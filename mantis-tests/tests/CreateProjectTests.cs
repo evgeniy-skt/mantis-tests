@@ -10,12 +10,19 @@ namespace mantis_tests
         {
             var projectData = new ProjectData {Name = "Test Project", Description = "fdsgfhg"};
             var accountData = new AccountData {Name = "administrator", Password = "root2"};
+            var oldProjects = ProjectData.GetAll();
             _applicationManager.Login.Login(accountData);
             _applicationManager.ManagementMenu.GoToManagePage();
             _applicationManager.Project.GoToProjectPage();
 
             _applicationManager.Project.Create(projectData);
+            Assert.AreEqual(oldProjects.Count + 1, _applicationManager.Project.GetProjectListCount());
 
+            var newProject = ProjectData.GetAll();
+            oldProjects.Add(projectData);
+            oldProjects.Sort();
+            newProject.Sort();
+            Assert.AreEqual(oldProjects, newProject);
             _applicationManager.Login.LogOut();
         }
     }

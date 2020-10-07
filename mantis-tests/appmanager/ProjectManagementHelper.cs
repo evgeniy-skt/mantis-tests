@@ -71,5 +71,12 @@ namespace mantis_tests
             var listProject = Driver.FindElements(By.CssSelector(" td > a"));
             listProject[0].Click();
         }
+
+        public int GetProjectListCount()
+        {
+            return Driver.FindElements(By.XPath(
+                    "//*[@id=\"main-container\"]/div//div[2]/table/tbody/tr"))
+                .Count;
+        }
     }
 }
