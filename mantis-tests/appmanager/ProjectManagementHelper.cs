@@ -13,10 +13,32 @@ namespace mantis_tests
 
         public void Create(ProjectData project)
         {
-            InitCreateProject();
-            FillProjectData(project);
-            ConfirmProjectCreation();
-            Proceed();
+            if (ProjectData.GetAll().Count < 1)
+            {
+                var isManageProjPageOpen = Driver.Url.Contains("manage_proj_page");
+                if (isManageProjPageOpen)
+                {
+                    InitCreateProject();
+                    FillProjectData(project);
+                    ConfirmProjectCreation();
+                    Proceed();
+                }
+                else
+                {
+                    FillProjectData(project);
+                    ConfirmProjectCreation();
+                    Proceed();
+                }
+            }
+            else
+            {
+                _applicationManager.ManagementMenu.GoToManagePage();
+                _applicationManager.Project.GoToProjectPage();
+                InitCreateProject();
+                FillProjectData(project);
+                ConfirmProjectCreation();
+                Proceed();
+            }
         }
 
         private void Proceed()
@@ -48,6 +70,8 @@ namespace mantis_tests
 
         public void Remove(int index)
         {
+            _applicationManager.ManagementMenu.GoToManagePage();
+            _applicationManager.Project.GoToProjectPage();
             SelectProjectToRemove(index);
             InitRemoveProject();
             ConfirmRemoveProject();
@@ -72,6 +96,13 @@ namespace mantis_tests
             listProject[index].Click();
         }
 
+        private void SelectProjectToRemove(string projectName)
+        {
+            _applicationManager.ManagementMenu.GoToManagePage();
+            _applicationManager.Project.GoToProjectPage();
+            Driver.FindElement(By.LinkText(projectName)).Click();
+        }
+
         public int GetProjectListCount()
         {
             return Driver.FindElements(By.XPath(
@@ -86,6 +117,19 @@ namespace mantis_tests
                 FillProjectData(projectData);
                 ConfirmProjectCreation();
                 Proceed();
+            }
+        }
+
+        public void RemoveIfExist(ProjectData project)
+        {
+            foreach (var projectData in ProjectData.GetAll())
+            {
+                if (projectData.Name == project.Name)
+                {
+                    SelectProjectToRemove(projectData.Name);
+                    InitRemoveProject();
+                    ConfirmRemoveProject();
+                }
             }
         }
     }

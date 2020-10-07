@@ -16,8 +16,7 @@ namespace mantis_tests
             _applicationManager.Project.CreateIfNotExist(projectData);
             var oldProjects = ProjectData.GetAll();
             
-            _applicationManager.ManagementMenu.GoToManagePage();
-            _applicationManager.Project.GoToProjectPage();
+
 
             _applicationManager.Project.Remove(0);
 
