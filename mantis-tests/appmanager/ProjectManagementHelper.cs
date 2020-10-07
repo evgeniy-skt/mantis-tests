@@ -46,9 +46,9 @@ namespace mantis_tests
             Driver.FindElement(By.LinkText("Manage Projects")).Click();
         }
 
-        public void Remove()
+        public void Remove(int index)
         {
-            SelectProjectToRemove();
+            SelectProjectToRemove(index);
             InitRemoveProject();
             ConfirmRemoveProject();
         }
@@ -66,10 +66,10 @@ namespace mantis_tests
                 .Click();
         }
 
-        private void SelectProjectToRemove()
+        private void SelectProjectToRemove(int index)
         {
             var listProject = Driver.FindElements(By.CssSelector(" td > a"));
-            listProject[0].Click();
+            listProject[index].Click();
         }
 
         public int GetProjectListCount()
@@ -77,6 +77,16 @@ namespace mantis_tests
             return Driver.FindElements(By.XPath(
                     "//*[@id=\"main-container\"]/div//div[2]/table/tbody/tr"))
                 .Count;
+        }
+
+        public void CreateIfNotExist(ProjectData projectData)
+        {
+            if (ProjectData.GetAll().Count < 1)
+            {
+                FillProjectData(projectData);
+                ConfirmProjectCreation();
+                Proceed();
+            }
         }
     }
 }

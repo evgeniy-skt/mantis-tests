@@ -11,6 +11,7 @@ namespace mantis_tests
             var projectData = new ProjectData {Name = "Test Project", Description = "fdsgfhg"};
             var accountData = new AccountData {Name = "administrator", Password = "root2"};
             var oldProjects = ProjectData.GetAll();
+            
             _applicationManager.Login.Login(accountData);
             _applicationManager.ManagementMenu.GoToManagePage();
             _applicationManager.Project.GoToProjectPage();
