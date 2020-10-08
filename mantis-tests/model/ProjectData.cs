@@ -12,6 +12,12 @@ namespace mantis_tests
         [Column(Name = "name")] public string Name { get; set; }
         [Column(Name = "description")] public string Description { get; set; }
 
+        public static List<ProjectData> GetAllFromMantisApi(AccountData accountData)
+        {
+            var client = new Mantis.MantisConnectPortTypeClient();
+            return client.mc_project_add(accountData.Name, accountData.Password);
+        }
+
         public static List<ProjectData> GetAll()
         {
             DataConnection.DefaultSettings = new MantisDB.MySettings();

@@ -11,9 +11,9 @@ namespace mantis_tests
             _applicationManager = manager;
         }
 
-        public void Create(ProjectData project)
+        public void Create(ProjectData project, AccountData accountData)
         {
-            if (ProjectData.GetAll().Count < 1)
+            if (ProjectData.GetAllFromMantisApi(accountData).Count < 1)
             {
                 var isManageProjPageOpen = Driver.Url.Contains("manage_proj_page");
                 if (isManageProjPageOpen)
@@ -110,9 +110,9 @@ namespace mantis_tests
                 .Count;
         }
 
-        public void CreateIfNotExist(ProjectData projectData)
+        public void CreateIfNotExist(ProjectData projectData, AccountData accountData)
         {
-            if (ProjectData.GetAll().Count < 1)
+            if (ProjectData.GetAllFromMantisApi(accountData).Count < 1)
             {
                 FillProjectData(projectData);
                 ConfirmProjectCreation();
@@ -120,9 +120,9 @@ namespace mantis_tests
             }
         }
 
-        public void RemoveIfExist(ProjectData project)
+        public void RemoveIfExist(ProjectData project, AccountData accountData)
         {
-            foreach (var projectData in ProjectData.GetAll())
+            foreach (var projectData in ProjectData.GetAllFromMantisApi(accountData))
             {
                 if (projectData.Name == project.Name)
                 {

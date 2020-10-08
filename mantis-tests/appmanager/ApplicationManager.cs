@@ -22,7 +22,10 @@ namespace mantis_tests
             Login = new LoginHelper(this);
             Project = new ProjectManagementHelper(this);
             ManagementMenu = new ManagementMenuHelper(this);
+            Api = new ApiHelper(this);
         }
+
+        public ApiHelper Api { get; set; }
 
         ~ApplicationManager()
         {

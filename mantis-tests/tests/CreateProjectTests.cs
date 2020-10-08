@@ -13,13 +13,13 @@ namespace mantis_tests
 
 
             _applicationManager.Login.Login(accountData);
-            _applicationManager.Project.RemoveIfExist(projectData);
-            var oldProjects = ProjectData.GetAll();
-            _applicationManager.Project.Create(projectData);
+            _applicationManager.Project.RemoveIfExist(projectData, accountData);
+            var oldProjects = ProjectData.GetAllFromMantisApi(accountData);
+            _applicationManager.Project.Create(projectData, accountData);
 
             Assert.AreEqual(oldProjects.Count + 1, _applicationManager.Project.GetProjectListCount());
 
-            var newProject = ProjectData.GetAll();
+            var newProject = ProjectData.GetAllFromMantisApi(accountData);
             oldProjects.Add(projectData);
             oldProjects.Sort();
             newProject.Sort();

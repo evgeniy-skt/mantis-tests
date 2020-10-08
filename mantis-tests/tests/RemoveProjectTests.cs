@@ -13,8 +13,8 @@ namespace mantis_tests
 
             _applicationManager.Login.Login(accountData);
             
-            _applicationManager.Project.CreateIfNotExist(projectData);
-            var oldProjects = ProjectData.GetAll();
+            _applicationManager.Api.CreateIfNotExist(projectData, accountData);
+            var oldProjects = ProjectData.GetAllFromMantisApi(accountData);
             
 
 
@@ -22,7 +22,7 @@ namespace mantis_tests
 
             Assert.AreEqual(oldProjects.Count - 1, _applicationManager.Project.GetProjectListCount());
 
-            var newProjects = ProjectData.GetAll();
+            var newProjects = ProjectData.GetAllFromMantisApi(accountData);
             oldProjects.RemoveAt(0);
             oldProjects.Sort();
             newProjects.Sort();
